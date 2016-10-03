@@ -55,6 +55,7 @@ namespace ChatApp
             //bind the socket
             if (connected == false)
             {
+            try{
                 sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
                 sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
@@ -72,6 +73,11 @@ namespace ChatApp
                 buttonConnect.Text = "End";
                 buttonSend.Enabled = true;
                 connected = true;
+                }
+                catch(Exception ex)
+                {
+                   MessageBox.Show(ex.ToString());
+                }
             }
             else
             {
